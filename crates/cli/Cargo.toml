@@ -1,0 +1,16 @@
+[package]
+name = "cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "lumen"
+path = "src/main.rs"
+
+[dependencies]
+math.workspace = true
+scene.workspace = true
+bvh.workspace = true
+tracer.workspace = true
+rand.workspace = true
