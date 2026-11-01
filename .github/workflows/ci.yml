@@ -1,0 +1,17 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: sudo apt-get update && sudo apt-get install -y glslc
+      - run: sh shaders/build.sh
+      - run: cargo build --workspace --release
+      - run: cargo test --workspace
+      - run: cargo run -p cli --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: render
+          path: out.ppm
