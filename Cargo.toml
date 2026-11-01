@@ -1,1 +1,35 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/math",
+    "crates/scene",
+    "crates/bvh",
+    "crates/tracer",
+    "crates/gpu",
+    "crates/physics",
+    "crates/app",
+    "crates/cli",
+]
 
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+math = { path = "crates/math" }
+scene = { path = "crates/scene" }
+bvh = { path = "crates/bvh" }
+tracer = { path = "crates/tracer" }
+gpu = { path = "crates/gpu" }
+physics = { path = "crates/physics" }
+rand = "0.8"
+anyhow = "1"
+thiserror = "1"
+winit = "0.29"
+ash = "0.37"
+raw-window-handle = "0.6"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
